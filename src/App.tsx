@@ -1,24 +1,22 @@
 import React from "react";
 import "./App.scss";
-import Logo from "./components/Logo";
+import { Switch, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+
+import Home from "./views/Home";
+import About from "./views/About";
+import NotFound from "./views/NotFound";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          <Logo />
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <Navbar />
+      <Switch>
+        <Route path="/" component={Home} exact />
+        <Route path="/about" component={About} />
+        {/* <Route path="/shop" component={Shop} /> */}
+        <Route component={NotFound} />
+      </Switch>
+    </main>
   );
 }
 
